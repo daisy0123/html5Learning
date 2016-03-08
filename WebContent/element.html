@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>element</title>
+	</head>
+
+	<body>
+		<!--figure元素以及figcaption元素-->
+		<figure>
+			<img src="img/ladder.png" alt="学习" />
+			<img src="img/icon.png" alt="学习" />
+			<figcaption>学习</figcaption>
+			<!--只放一次 -->
+		</figure>
+		<br />
+		<!--details元素和summary元素-->
+		<script>
+			function detail_onclick(detail) {
+				var p = document.getElementById("p");
+				if (detail.open) {
+					p.style.visibility = "hidden";
+				} else {
+					p.style.visibility = "visible";
+				}
+			}
+		</script>
+		<details id="detail" onclick="detail_onclick(this)">
+			<summary>速度与激情7</summary>
+			<p id="p" style="visibility: hidden;">你好么</p>
+		</details>
+		<!--mark元素-->
+		<p>这个是
+			<mark>测试</mark>
+		</p>
+
+		<!--progress -->
+
+		<section>
+			<h2>progress元素的使用</h2>
+			<p>完成的百分比
+				<progress style="background-color: #269abc;" id="p1" max="100"><span>0</span>%</progress>
+			</p>
+			<input type="button" onclick="btn()" value="点击" />
+		</section>
+		<script>
+			/*										
+			function btn(){
+				for(var i=0;i<=100;i++){
+					setTimeout(function(){
+						updateprogress(i);
+					},2000);
+					}
+			}
+			*/
+			function btn(){
+				var i = 0;
+				function thread_one(){
+					if(i <= 100){
+						i++;
+						updateprogress(i);
+					}
+				}
+				setInterval(thread_one, 100);
+			}
+
+			function updateprogress(newValue) {
+				var progressBar = document.getElementById("p1");
+				progressBar.value = newValue;
+				progressBar.getElementsByTagName("span")[0].textContent =newValue;
+			}				
+		</script>
+		<!--meter元素-->
+		<meter value="40"  min="0" max="100" low="10" high="90" optimum="80" ></meter>
+		<!--ol元素 -->
+		<ol start="5" reversed>
+			<li>列表1</li>
+			<li>列表2</li>
+			<li>列表3</li>
+			<li>列表4</li>
+			<li>列表5</li>
+		</ol>
+		<!--dl元素 -->
+		<dl>
+			<dt>hello</dt>
+			<dd>你好</dd>
+			<dd>你好</dd>
+			<dd>你好</dd>
+			<dt>博客</dt>
+			<dd>你喜欢用博客吗</dd>
+		</dl>
+		<!--cite元素 -->
+		<h3>cite元素</h3>
+		<p>我最喜欢的电影是<cite>小幸运</cite></p>
+		<!--small元素 -->
+		
+	</body>
+
+</html>

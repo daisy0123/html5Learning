@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>表单测试</title>
+	</head>
+
+	<body>
+		<form id="testform">
+			<input type="text">
+		</form>
+		<textarea form="testform" rows="5px" cols="30px"></textarea>
+
+		<form id="testform1">
+			<input type="submit" name="s1" value="v1" formaction="xx.jsp" />提交到xx.jsp的页面
+			<input type="submit" name="s2" value="v2" formaction="xx.jsp" />提交到xx.jsp的页面
+			<input type="submit" name="s3" value="v3" formaction="xx.jsp" />提交到xx.jsp的页面
+		</form>
+
+		<form>
+			<input type="text" formenctype="text/plain" />
+			<input type="text" formenctype="multipart/form-data" />
+			<input type="text" formenctype="application/x-www-form-urlencoded">
+		</form>
+
+		<form action="">
+			<input type="text" required="required" />
+			<button type="submit">提交</button>
+		</form>
+
+		<form id="testform2">
+			<label id="label" for="txt_name">姓名：</label>
+			<input id="txt_name" />
+			<input type="button" id="btnValidate" value="验证" onclick="Validate()" />
+		</form>
+
+		<form>
+			<label id="label1">
+				邮编：
+				<input id="txt_zip" maxlength="6" />
+				<small>请输入六位数字</small>
+			</label>
+			<input type="button" value="设置默认值" onclick="setValue()" />
+		</form>
+
+		<input type="text" placeholder="请输入用户名" />
+
+		<form>
+			<input type="text" name="greeting" list="greeting" autocomplete="on" />
+			<datalist id="greeting" style="display: none;">
+				<option value="HTML5学习">HTML5学习</option>
+				<option value="Android学习">Android学习</option>
+				<option value="ios学习">ios学习</option>
+			</datalist>
+		</form>
+
+		<form>
+			请输入内容
+			<input pattern="[A-Z]{3}" name="part" />
+			<input type="submit" />
+		</form>
+
+		<form>
+			<input type="test" name="text" />
+			<input type="button" value="点击我" onclick="AD()" />
+		</form>
+
+		<input type="checkbox" indeterminate id="cb" />属性测试
+		
+		<form action="">
+			姓名：<input type="text" name="name" />
+			<input type="image" src="img/icon.png" alt="编辑" width="20" height="20"/>
+		</form>
+		
+		
+		<script>
+			function Validate() {
+				var txtName = document.getElementById("txt_name");
+				var btn = document.getElementById("btnValidate");
+				var form = document.getElementById("testform2");
+				if (txtName.value.trim() == "") {
+					var label = document.createElement("label");
+					label.setAttribute("for", "txt_name");
+					form.insertBefore(label, btn);
+					txtName.labels[1].innerHTML = "请输入姓名";
+					txtName.labels[1].setAttribute("style", "font-size: 9px;color:red");
+				}
+			}
+
+			function setValue() {
+				var label = document.getElementById("label1");
+				var textbox = label.control;
+				textbox.value = "010010";
+			}
+
+			function AD() {
+				var control = document.forms[8]['text'];
+				var Direction = control.selectionDirection;
+				alert(Direction);
+			}
+			var cb = document.getElementById("cb");
+			cb.indeterminate = true;
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+		function draw(id){
+			var canvas=document.getElementById(id);
+			var context=canvas.getContext("2d");
+			context.fillStyle="#CCCCCC";
+			context.fillRect(0,0,1000,1000);
+			img=new Image();
+			img.src="img/ladder.png";
+			img.onload=function(){
+				drawImage(context,img);
+			}
+		}
+			function drawImage(context,img){
+				context.drawImage(img,0,0,200,200);
+				context.drawImage(img,270,270,580,580,230,230,350,350);
+			}
+		</script>
+	</head>
+	<body onload="draw('canvas')">
+		<!--
+        	context.drawImage(img,x,y);
+        	context.drawImage(img,x,y,w,h);
+        	context.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+        -->
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+	</body>
+</html>
